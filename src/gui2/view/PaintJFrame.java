@@ -5,8 +5,8 @@ import gui2.model.ShapeList;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import static gui2.view.PaintFrameState.*;
 
@@ -204,12 +204,9 @@ public class PaintJFrame extends JFrame {
         return new Color(r,g,b);
     }
     
-    private class MouseButtonListener extends MouseAdapter
-    {
+    private class MouseButtonListener implements MouseListener {
         @Override
         public void mouseClicked(MouseEvent e) {
-            super.mouseClicked(e);
-            
             if(e.getSource() == addRectangleBtn)
             {
                 if(state == DRAWRECT)
@@ -254,6 +251,22 @@ public class PaintJFrame extends JFrame {
             }
             System.out.println("Frame state set to: " + state.name());
             revalidate();
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
         }
     }
 }
