@@ -1,6 +1,6 @@
 package gui2.view;
 
-import gui2.model.*;
+import gui2.model.ShapeList;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,20 +14,19 @@ public class PaintJPanel extends JPanel {
 
     ShapeList model;
 
-    public PaintJPanel(ShapeList model)
-    {
+    public PaintJPanel(ShapeList model) {
         this.model = model;
         init();
     }
 
     private void init() {
-        setBackground(new Color(1f,1f,1f));
+        setBackground(new Color(1f, 1f, 1f));
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for(gui2.model.Shape s : model)
+        for (gui2.model.Shape s : model)
             s.render(g);
         g.dispose();
     }

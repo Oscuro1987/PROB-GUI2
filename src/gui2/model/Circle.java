@@ -11,14 +11,13 @@ public class Circle implements Shape {
     Point topLeft;
     int radius;
     private Color color;
-    
-    public Circle(Point topLeft, int radius)
-    {
+
+    public Circle(Point topLeft, int radius) {
         this.topLeft = topLeft;
         this.radius = radius;
-        color = new Color(0f,0f,0f);
+        color = new Color(0f, 0f, 0f);
     }
-    
+
     @Override
     public void render(Graphics g) {
         g.setColor(color);
@@ -27,10 +26,10 @@ public class Circle implements Shape {
 
     @Override
     public boolean inBounds(Point p) {
-        double dx,dy;
-        dx = p.getX()- topLeft.x;
-        dy = p.getY()- topLeft.y;
-        return dx*dx+dy*dy <= radius*radius;
+        double dx, dy;
+        dx = p.getX() - topLeft.x;
+        dy = p.getY() - topLeft.y;
+        return dx * dx + dy * dy <= radius * radius;
     }
 
     @Override
@@ -57,12 +56,12 @@ public class Circle implements Shape {
 
     @Override
     public int getWidth() {
-        return radius*2;
+        return radius * 2;
     }
 
     @Override
     public int getHeight() {
-        return radius*2;
+        return radius * 2;
     }
 
     @Override

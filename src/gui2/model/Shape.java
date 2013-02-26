@@ -9,13 +9,22 @@ import java.awt.*;
  */
 public interface Shape {
     void render(Graphics g);
+
     boolean inBounds(Point p);
+
     void move(int dx, int dy);
+
     void moveTo(int x, int y);
+
     int getX();
+
     int getY();
+
     int getWidth();
+
     int getHeight();
+
     void setColor(Color color);
+
     Color getColor();
 }

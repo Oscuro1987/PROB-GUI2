@@ -1,7 +1,5 @@
 package gui2.model;
 
-import gui2.model.Shape;
-
 import java.awt.*;
 import java.awt.geom.Line2D;
 
@@ -11,17 +9,16 @@ import java.awt.geom.Line2D;
  *         Time: 02:13
  */
 public class Line implements Shape {
-    
+
     private Point start, end;
     private Color color;
-    
-    public Line(Point start, Point end)
-    {
+
+    public Line(Point start, Point end) {
         this.start = start;
         this.end = end;
-        color = new Color(0f,0f,0f);
+        color = new Color(0f, 0f, 0f);
     }
-    
+
     @Override
     public void render(Graphics g) {
         g.setColor(color);
@@ -30,7 +27,7 @@ public class Line implements Shape {
 
     @Override
     public boolean inBounds(Point p) {
-        if(Line2D.ptLineDist(start.x, start.y, end.x, end.y, p.x, p.y) >= -5.0 && Line2D.ptSegDist(start.x, start.y, end.x, end.y, p.x, p.y) <= 5.0)
+        if (Line2D.ptLineDist(start.x, start.y, end.x, end.y, p.x, p.y) >= -5.0 && Line2D.ptSegDist(start.x, start.y, end.x, end.y, p.x, p.y) <= 5.0)
             return true;
         return false;
     }
@@ -46,7 +43,7 @@ public class Line implements Shape {
     @Override
     public void moveTo(int x, int y) {
         //TODO moveTo ligne
-        return; 
+        return;
     }
 
     @Override
