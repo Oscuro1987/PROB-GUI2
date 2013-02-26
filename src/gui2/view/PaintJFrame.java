@@ -49,7 +49,7 @@ public class PaintJFrame extends JFrame {
 
     private void init() {
         this.setLayout(new BorderLayout());
-        this.setTitle("PROBPaint");
+        this.setTitle("PROB Paint");
 
         state = IDLE;
         
@@ -72,11 +72,11 @@ public class PaintJFrame extends JFrame {
         buttonPanel.add(moveShapeBtn);
         buttonPanel.add(deleteShapeBtn);
 
-        bottomPanel.add(buttonPanel, BorderLayout.NORTH);
+        bottomPanel.add(buttonPanel, BorderLayout.CENTER);
         
         colorPickerPanel = new JPanel(new FlowLayout());
 
-        redLabel = new JLabel("Color Picker --> R: ");
+        redLabel = new JLabel("Color Picker =====>       R: ");
         greenLabel = new JLabel("G: ");
         blueLabel = new JLabel("B: ");
         red = new JTextField("0", 4);
