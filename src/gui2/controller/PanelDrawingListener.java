@@ -3,7 +3,7 @@ package gui2.controller;
 import gui2.model.Circle;
 import gui2.model.Rectangle;
 import gui2.model.Shape;
-import gui2.view.Line;
+import gui2.model.Line;
 import gui2.view.PaintJFrame;
 
 import java.awt.*;

@@ -1,4 +1,4 @@
-package gui2.view;
+package gui2.model;
 
 import gui2.model.Shape;
 
