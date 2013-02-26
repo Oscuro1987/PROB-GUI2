@@ -72,30 +72,29 @@ public class PanelDrawingListener extends MouseAdapter
     public void mousePressed(MouseEvent e) {
         super.mousePressed(e);
         start = new Point(e.getX(), e.getY());
-
-        if(owner.getFrameState() == DRAWRECT)
+        
+        switch(owner.getFrameState())
         {
-            System.out.println("Started drawing a rectangle");
-        }
-        else if(owner.getFrameState() == DRAWCIRCLE)
-        {
-            System.out.println("Started drawing a circle");
-        }
-        else if(owner.getFrameState() == DRAWLINE)
-        {
-            System.out.println("Started drawing a line");
-        }
-        else if(owner.getFrameState() == MOVESHAPE)
-        {
-            for(gui2.model.Shape s : owner.getShapeList())
-            {
-                if(s.inBounds(start))
+            case DRAWRECT:
+                System.out.println("Started drawing a rectangle");
+                break;
+            case DRAWCIRCLE:
+                System.out.println("Started drawing a circle");
+                break;
+            case DRAWLINE:
+                System.out.println("Started drawing a line");
+                break;
+            case MOVESHAPE:
+                for(gui2.model.Shape s : owner.getShapeList())
                 {
-                    System.out.println("Clicked inside a: " + s.getClass().getSimpleName());
-                    selectedShape = s;
-                    break;
+                    if(s.inBounds(start))
+                    {
+                        System.out.println("Clicked inside a: " + s.getClass().getSimpleName());
+                        selectedShape = s;
+                        break;
+                    }
                 }
-            }
+                break;
         }
     }
 
@@ -106,34 +105,36 @@ public class PanelDrawingListener extends MouseAdapter
 
         int dx = end.x - start.x;
         int dy = end.y - start.y;
-
-        if(owner.getFrameState() == DRAWRECT)
+        
+        switch(owner.getFrameState())
         {
-            Rectangle r = new Rectangle(start, dx, dy);
-            owner.getShapeList().add(r);
-            owner.repaint();
-            System.out.println("Finished drawing a rectangle");
-        }
-        else if(owner.getFrameState() == DRAWCIRCLE)
-        {
-            int radius = (int)Math.sqrt(Math.pow((end.x-start.y), 2) + Math.pow((end.y-start.y), 2) );
-            Circle c = new Circle(start, radius/2);
-            owner.getShapeList().add(c);
-            owner.repaint();
-            System.out.println("Finished drawing a circle");
-        }
-        else if(owner.getFrameState() == DRAWLINE)
-        {
-            Line l = new Line(start, end);
-            owner.getShapeList().add(l);
-            owner.repaint();
-            System.out.println("Finished drawing a line");
-        }
-        else if(owner.getFrameState() == MOVESHAPE && selectedShape != null)
-        {
-            selectedShape.move(dx,dy);
-            owner.repaint();
-            selectedShape = null;
+            case DRAWRECT:
+                Rectangle r = new Rectangle(start, dx, dy);
+                owner.getShapeList().add(r);
+                owner.repaint();
+                System.out.println("Finished drawing a rectangle");   
+                break;
+            case DRAWCIRCLE:
+                int radius = (int)Math.sqrt(Math.pow((end.x-start.y), 2) + Math.pow((end.y-start.y), 2) );
+                Circle c = new Circle(start, radius/2);
+                owner.getShapeList().add(c);
+                owner.repaint();
+                System.out.println("Finished drawing a circle");
+                break;
+            case DRAWLINE:
+                Line l = new Line(start, end);
+                owner.getShapeList().add(l);
+                owner.repaint();
+                System.out.println("Finished drawing a line");
+                break;
+            case MOVESHAPE:
+                if(selectedShape != null)
+                {
+                    selectedShape.move(dx,dy);
+                    owner.repaint();
+                    selectedShape = null;       
+                }
+                break;
         }
     }
 

@@ -113,7 +113,6 @@ public class PaintJFrame extends JFrame {
         deleteShapeBtn.addMouseListener(new MouseButtonListener());
         setColorBtn.addMouseListener(new MouseButtonListener());
         
-        
         paintPanel.addMouseListener(new PanelDrawingListener(this));
     }
 
